@@ -1,8 +1,26 @@
 <script>
+	import axios from "axios";
+
 	import Counter from '@/routes/home/Counter.svelte';
-	
 	import welcome from '@/lib/images/svelte-welcome.webp';
 	import welcome_fallback from '@/lib/images/svelte-welcome.png';
+
+	const api = axios.create({
+  	baseURL: "http://localhost:8080", 
+	});
+
+  /**
+  * hi 를 서버에 보냄 
+  */
+	const send_hi = () => {
+		const hi = "안녕하세요";
+		api.post("/hi", hi, {
+
+		}).then((res) => {
+			console.log(res);
+		})
+	}
+
 </script>
 
 <svelte:head>
@@ -19,14 +37,17 @@
 			</picture>
 		</span>
 
-		to your new실험2<br />SvelteKit app
+		to your new<br />SvelteKit app
 	</h1>
 
+	
 	<h2>
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
 
 	<Counter />
+
+	<button on:click={send_hi}>인사 서버에 보내기</button>
 </section>
 
 <style>

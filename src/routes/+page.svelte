@@ -19,7 +19,7 @@
 			</picture>
 		</span>
 
-		to your new실험1<br />SvelteKit app
+		to your new실험2<br />SvelteKit app
 	</h1>
 
 	<h2>
